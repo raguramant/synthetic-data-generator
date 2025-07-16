@@ -50,8 +50,8 @@
     },
     "identification_code_qualifier": {
       "type": "string",
-      "description": "Identification Code Qualifier (e.g., MI = Member ID, XX = National Provider Identifier, SV = Service Provider Number, FI = Federal Tax ID, PI = Payer Identifier)",
-      "enum": ["MI", "XX", "SV", "FI", "PI"],
+      "description": "Identification Code Qualifier (e.g., MI = Member ID, XX = National Provider Identifier, SV = Service Provider Number, FI = Federal Tax ID, PI = Payer Identifier, ZZ = Mutually Defined)",
+      "enum": ["MI", "XX", "SV", "FI", "PI", "ZZ"],
       "nullable": true
     },
     "identification_code": {
