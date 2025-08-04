@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "X12 REF Segment",
+  "description": "Schema for X12 REF segment, which contains reference identification information.",
+  "type": "object",
+  "properties": {
+    "reference_identification_qualifier": {
+      "type": "string",
+      "description": "Reference Identification Qualifier (e.g., ZZ = Mutually Defined, MI = Member ID, XX = National Provider Identifier, SV = Service Provider Number, FI = Federal Tax ID, PI = Payer Identifier, PR = Payer Name, 1P = Provider Name)",
+      "enum": ["ZZ", "MI", "XX", "SV", "FI", "PI", "PR", "1P"]
+    },
+    "reference_identification": {
+      "type": "string",
+      "description": "Reference Identification (e.g., Member ID, National Provider Identifier)",
+      "minLength": 1,
+      "maxLength": 20
+    },
+    "ref_segment": {
+      "type": "string",
+      "description": "Ref segment in the format REF*XX*123456789~",
+      "minLength": 1,
+      "maxLength": 60
+    }
+  },
+  "required": ["reference_identification_qualifier", "reference_identification", "ref_segment"]
+}

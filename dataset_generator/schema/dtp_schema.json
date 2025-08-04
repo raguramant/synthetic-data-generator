@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "X12 DTP Segment",
+  "description": "Schema for X12 DTP segment, which contains date/time period information.",
+  "type": "object",
+  "properties": {
+    "dtp_schema": {
+      "type": "string",
+      "description": "Date/Time Period (e.g., DTP*291*D8*20220101-20220131~)",
+      "minLength": 1,
+      "maxLength": 30
+    }
+  },
+  "required": ["dtp_schema"]
+}
