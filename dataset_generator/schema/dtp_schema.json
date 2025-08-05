@@ -4,12 +4,12 @@
   "description": "Schema for X12 DTP segment, which contains date/time period information.",
   "type": "object",
   "properties": {
-    "dtp_schema": {
+    "dtp_segment": {
       "type": "string",
       "description": "Date/Time Period (e.g., DTP*291*D8*20220101-20220131~)",
       "minLength": 1,
       "maxLength": 30
     }
   },
-  "required": ["dtp_schema"]
+  "required": ["dtp_segment"]
 }
