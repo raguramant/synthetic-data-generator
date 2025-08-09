@@ -1,3 +1,5 @@
+import os
+
 properties_list = [
     {"name": {"type": "string", "minLength": 1, "maxLength": 50, "description": "Full name of the individual"}},
     {"subscriber_name": {"type": "string", "minLength": 1, "maxLength": 50, "description": "Name of the subscriber"}},
@@ -42,12 +44,16 @@ properties_list = [
     {"allergies": {"type": "array", "items": {"type": "string"},"maxItems": 10, "description": "Allergies of the individual"}},
     {"medical_conditions": {"type": "array", "items": {"type": "string"}, "description": "Medical conditions of the individual"}},
     {"medications": {"type": "array", "items": {"type": "string"}, "description": "Medications of the individual"}},
-    {"emergency_contact": {"type": "object", "description": "Emergency contact information"}},
+    {"emergency_contact": {"type": "object", "description": "Emergency contact information", "properties": {
+        "name": {"type": "string", "minLength": 1, "maxLength": 50, "description": "Name of the emergency contact"},
+        "relationship": {"type": "string", "minLength": 1, "maxLength": 50, "description": "Relationship to the individual"},
+        "phone": {"type": "string", "pattern": "^\\+?[0-9\\- ]{7,15}$", "description": "Phone number of the emergency contact"}
+    }}},
     {"last_checkup_date": {"type": "string", "format": "date", "description": "Date of last checkup"}},
     {"doctor_name": {"type": "string", "description": "Name of the individual's doctor"}},
     {"smoker": {"type": "boolean", "description": "Indicates if the individual is a smoker"}},
     {"alcohol_consumption": {"type": "string", "enum": ["none", "occasional", "regular"], "description": "Alcohol consumption habits of the individual"}},
-    {"heart_rate": {"type": "integer", "minimum": 0, "description": "Heart rate of the individual"}},
+    {"heart_rate": {"type": "integer", "minimum": 0,"maximum": 300, "description": "Heart rate of the individual"}},
     {"blood_pressure": {"type": "string", "pattern": "^(\\d{1,3})/(\\d{1,3})$", "description": "Blood pressure of the individual (systolic/diastolic)"}},
     # Health insurance related fields
     {"service_type": {"type": "string", "minLength": 1, "maxLength": 50, "description": "Type of service provided (e.g., consultation, surgery)"}},
@@ -88,3 +94,14 @@ def get_dataset_version(file_name_prefix, dataset_path="../data/"):
     next_version =  latest_version + 1  # Increment to get the next version number
     
     return next_version
+
+def execute_lambdas(d):
+    result = {}
+    for k, v in d.items():
+        if isinstance(v, dict):
+            result[k] = execute_lambdas(v)
+        elif callable(v):
+            result[k] = v()
+        else:
+            result[k] = v
+    return result
