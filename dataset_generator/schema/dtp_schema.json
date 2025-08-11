@@ -6,7 +6,7 @@
   "properties": {
     "dtp_segment": {
       "type": "string",
-      "description": "Date/Time Period (e.g., DTP*291*D8*20220101-20220131~)",
+      "description": "Date/Time Period",
       "minLength": 1,
       "maxLength": 30
     }

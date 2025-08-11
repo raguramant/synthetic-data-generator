@@ -96,7 +96,7 @@
     },
     "isa_segment": {
       "type": "string",
-      "description": "ISA segment in the format ISA*00*          *00*          *ZZ*123456789012345*ZZ*987654321098765*YYMMDD*HHMM*^*00401*000000001*0*T*:~",
+      "description": "ISA segment",
       "minLength": 1,
       "maxLength": 106
     }

@@ -17,7 +17,7 @@
     },
     "ref_segment": {
       "type": "string",
-      "description": "Ref segment in the format REF*XX*123456789~",
+      "description": "Ref segment",
       "minLength": 1,
       "maxLength": 60
     }

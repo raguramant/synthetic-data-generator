@@ -63,7 +63,7 @@
     },
     "nm1_segment": {
       "type": "string",
-      "description": "NM1 Segment format of the data (e.g., NM1*IL*1*DOE*JOHN****MI*123456789~)",
+      "description": "NM1 Segment format of the data",
       "nullable": true,
       "maxLength": 255
     }
